@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MVCyEF.Models.usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Alta Usuario", "Guardar")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.password)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.ActionLink("Actualizar", "Modificar", new { id = item.Id }) |
+                @Html.ActionLink("Consultar", "detalles", new { id = item.Id }) |
+                @Html.ActionLink("Borrar", "Eliminar", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+    </table>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <font color="Red"> @ViewBag.llamada</font>
+    </div>
+</div>
